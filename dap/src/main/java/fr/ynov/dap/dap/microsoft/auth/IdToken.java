@@ -88,7 +88,7 @@ public class IdToken {
     }
 
     /**
-     * @param expirationTime
+     * @param expirationTime .
      */
     public void setExpirationTime(final long expirationTime) {
         this.expirationTime = expirationTime;
@@ -215,8 +215,8 @@ public class IdToken {
         Date now = new Date();
 
         // Check expiration and not before times
-        if (now.after(this.getUnixEpochAsDate(this.expirationTime)) ||
-                now.before(this.getUnixEpochAsDate(this.notBefore))) {
+        if (now.after(this.getUnixEpochAsDate(this.expirationTime))
+                || now.before(this.getUnixEpochAsDate(this.notBefore))) {
             // Token is not within it's valid "time"
             return false;
         }

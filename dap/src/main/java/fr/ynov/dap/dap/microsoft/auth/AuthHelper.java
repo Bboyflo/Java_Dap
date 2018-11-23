@@ -3,10 +3,16 @@ package fr.ynov.dap.dap.microsoft.auth;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Calendar;
 import java.util.Properties;
 import java.util.UUID;
 
 import org.springframework.web.util.UriComponentsBuilder;
+
+import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
+import retrofit2.Retrofit;
+import retrofit2.converter.jackson.JacksonConverterFactory;
 
 /**
  * @author Florian
@@ -137,5 +143,81 @@ public class AuthHelper {
         urlBuilder.queryParam("response_mode", "form_post");
 
         return urlBuilder.toUriString();
+    }
+
+    /**
+     * @param authCode .
+     * @param tenantId .
+     * @return tokenService
+     */
+    public static TokenResponse getTokenFromAuthCode(final String authCode, final String tenantId) {
+        // Create a logging interceptor to log request and responses
+        HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
+        interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+
+        OkHttpClient client = new OkHttpClient.Builder()
+                .addInterceptor(interceptor).build();
+
+        // Create and configure the Retrofit object
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(AUTHORITY)
+                .client(client)
+                .addConverterFactory(JacksonConverterFactory.create())
+                .build();
+
+        // Generate the token service
+        TokenService tokenService = retrofit.create(TokenService.class);
+
+        try {
+            return tokenService.getAccessTokenFromAuthCode(tenantId, getAppId(), getAppPassword(),
+                    "authorization_code", authCode, getRedirectUrl()).execute().body();
+        } catch (IOException e) {
+            TokenResponse error = new TokenResponse();
+            error.setError("IOException");
+            error.setErrorDescription(e.getMessage());
+            return error;
+        }
+    }
+
+    /**
+     * @param tokens .
+     * @param tenantId .
+     * @return tokenService
+     */
+    public static TokenResponse ensureTokens(final TokenResponse tokens, final String tenantId) {
+        // Are tokens still valid?
+        Calendar now = Calendar.getInstance();
+        if (now.getTime().before(tokens.getExpirationTime())) {
+            // Still valid, return them as-is
+            return tokens;
+        } else {
+            // Expired, refresh the tokens
+            // Create a logging interceptor to log request and responses
+            HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
+            interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+
+            OkHttpClient client = new OkHttpClient.Builder()
+                    .addInterceptor(interceptor).build();
+
+            // Create and configure the Retrofit object
+            Retrofit retrofit = new Retrofit.Builder()
+                    .baseUrl(AUTHORITY)
+                    .client(client)
+                    .addConverterFactory(JacksonConverterFactory.create())
+                    .build();
+
+            // Generate the token service
+            TokenService tokenService = retrofit.create(TokenService.class);
+
+            try {
+                return tokenService.getAccessTokenFromRefreshToken(tenantId, getAppId(), getAppPassword(),
+                        "refresh_token", tokens.getRefreshToken(), getRedirectUrl()).execute().body();
+            } catch (IOException e) {
+                TokenResponse error = new TokenResponse();
+                error.setError("IOException");
+                error.setErrorDescription(e.getMessage());
+                return error;
+            }
+        }
     }
 }
