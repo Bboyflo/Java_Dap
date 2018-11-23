@@ -2,7 +2,12 @@
 <pmd xmlns="http://pmd.sourceforge.net/report/2.0.0"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 http://pmd.sourceforge.net/report_2_0_0.xsd"
-    version="6.4.0" timestamp="2018-11-21T12:20:40.631">
+    version="6.4.0" timestamp="2018-11-23T20:17:14.751">
+<file name="C:\Users\Florian\Desktop\cours\Java\workspace\dap\src\main\java\fr\ynov\dap\dap\controller\GoogleAccount.java">
+<violation beginline="57" endline="57" begincolumn="37" endcolumn="59" rule="UnusedPrivateField" ruleset="Best Practices" package="fr.ynov.dap.dap.controller" class="GoogleAccount" variable="googleAccountRepository" externalInfoUrl="https://pmd.github.io/pmd-6.4.0/pmd_rules_java_bestpractices.html#unusedprivatefield" priority="3">
+Avoid unused private fields such as 'googleAccountRepository'.
+</violation>
+</file>
 <file name="C:\Users\Florian\Desktop\cours\Java\workspace\dap\src\main\java\fr\ynov\dap\dap\data\AppUser.java">
 <violation beginline="24" endline="24" begincolumn="21" endcolumn="22" rule="UnusedPrivateField" ruleset="Best Practices" package="fr.ynov.dap.dap.data" class="AppUser" variable="id" externalInfoUrl="https://pmd.github.io/pmd-6.4.0/pmd_rules_java_bestpractices.html#unusedprivatefield" priority="3">
 Avoid unused private fields such as 'id'.
@@ -11,6 +16,16 @@ Avoid unused private fields such as 'id'.
 <file name="C:\Users\Florian\Desktop\cours\Java\workspace\dap\src\main\java\fr\ynov\dap\dap\data\GoogleAccountData.java">
 <violation beginline="19" endline="19" begincolumn="17" endcolumn="18" rule="UnusedPrivateField" ruleset="Best Practices" package="fr.ynov.dap.dap.data" class="GoogleAccountData" variable="id" externalInfoUrl="https://pmd.github.io/pmd-6.4.0/pmd_rules_java_bestpractices.html#unusedprivatefield" priority="3">
 Avoid unused private fields such as 'id'.
+</violation>
+</file>
+<file name="C:\Users\Florian\Desktop\cours\Java\workspace\dap\src\main\java\fr\ynov\dap\dap\microsoft\auth\AuthHelper.java">
+<violation beginline="65" endline="65" begincolumn="27" endcolumn="42" rule="UnusedPrivateMethod" ruleset="Best Practices" package="fr.ynov.dap.dap.microsoft.auth" class="AuthHelper" method="getAppPassword" externalInfoUrl="https://pmd.github.io/pmd-6.4.0/pmd_rules_java_bestpractices.html#unusedprivatemethod" priority="3">
+Avoid unused private methods such as 'getAppPassword()'.
+</violation>
+</file>
+<file name="C:\Users\Florian\Desktop\cours\Java\workspace\dap\src\main\java\fr\ynov\dap\dap\microsoft\controller\AuthorizeController.java">
+<violation beginline="35" endline="35" begincolumn="14" endcolumn="26" rule="UnusedLocalVariable" ruleset="Best Practices" package="fr.ynov.dap.dap.microsoft.controller" class="AuthorizeController" method="authorize" variable="expectedNonce" externalInfoUrl="https://pmd.github.io/pmd-6.4.0/pmd_rules_java_bestpractices.html#unusedlocalvariable" priority="3">
+Avoid unused local variables such as 'expectedNonce'.
 </violation>
 </file>
 </pmd>
