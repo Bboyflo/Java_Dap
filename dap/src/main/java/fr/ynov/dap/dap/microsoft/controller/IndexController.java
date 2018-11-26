@@ -22,7 +22,7 @@ public class IndexController {
      * @param request .
      * @return la page html index
      */
-    @RequestMapping("/index")
+    @RequestMapping("/")
     public String index(final Model model, final HttpServletRequest request) {
         UUID state = UUID.randomUUID();
         UUID nonce = UUID.randomUUID();

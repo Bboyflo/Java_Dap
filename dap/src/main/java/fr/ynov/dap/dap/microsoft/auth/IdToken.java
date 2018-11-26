@@ -15,6 +15,12 @@ public class IdToken {
     // NOTE: This is just a subset of the claims returned in the
     // ID token. For a full listing, see:
     // https://azure.microsoft.com/en-us/documentation/articles/active-directory-v2-tokens/#idtokens
+
+    /**.
+     * Déclaration de la constante NOMBREDATE
+     */
+    private static final int NOMBREDATE = 1000;
+
     /**.
      * Déclaration de expirationTime
      */
@@ -201,7 +207,7 @@ public class IdToken {
         // but Jackson converts integers as milliseconds.
         // Rather than create a custom deserializer, this helper will do 
         // the conversion.
-        return new Date(epoch * 1000);
+        return new Date(epoch * NOMBREDATE);
     }
 
     /**

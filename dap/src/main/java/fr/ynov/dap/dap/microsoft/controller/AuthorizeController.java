@@ -1,11 +1,13 @@
 package fr.ynov.dap.dap.microsoft.controller;
 
+import java.io.IOException;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -13,6 +15,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import fr.ynov.dap.dap.microsoft.auth.AuthHelper;
 import fr.ynov.dap.dap.microsoft.auth.IdToken;
 import fr.ynov.dap.dap.microsoft.auth.TokenResponse;
+import fr.ynov.dap.dap.microsoft.service.OutlookService;
+import fr.ynov.dap.dap.microsoft.service.OutlookServiceBuilder;
+import fr.ynov.dap.dap.microsoft.service.OutlookUser;
 
 /**
  * @author Florian
@@ -32,7 +37,7 @@ public class AuthorizeController {
             @RequestParam("code") final String code,
             @RequestParam("id_token") final String idToken,
             @RequestParam("state") final UUID state,
-            final HttpServletRequest request) {
+            final HttpServletRequest request, final Model model) {
         // Get the expected state value from the session
         HttpSession session = request.getSession();
         UUID expectedState = (UUID) session.getAttribute("expected_state");
@@ -46,6 +51,16 @@ public class AuthorizeController {
                 session.setAttribute("tokens", tokenResponse);
                 session.setAttribute("userConnected", true);
                 session.setAttribute("userName", idTokenObj.getName());
+                // Get user info
+                OutlookService outlookService = OutlookServiceBuilder.getOutlookService(tokenResponse.getAccessToken(),
+                        null);
+                OutlookUser user;
+                try {
+                    user = outlookService.getCurrentUser().execute().body();
+                    session.setAttribute("userEmail", user.getMail());
+                } catch (IOException e) {
+                    session.setAttribute("error", e.getMessage());
+                }
                 session.setAttribute("userTenantId", idTokenObj.getTenantId());
             } else {
                 session.setAttribute("error", "ID token failed validation.");
@@ -53,7 +68,12 @@ public class AuthorizeController {
         } else {
             session.setAttribute("error", "Unexpected state returned from authority.");
         }
-        return "mail";
+
+        model.addAttribute("authCode", code);
+        model.addAttribute("idToken", idToken);
+        model.addAttribute("logoutUrl", "/logout");
+
+        return "redirect:/mail";
     }
 
     /**
@@ -64,6 +84,6 @@ public class AuthorizeController {
     public String logout(final HttpServletRequest request) {
         HttpSession session = request.getSession();
         session.invalidate();
-        return "redirect:/index.html";
+        return "redirect:/";
     }
 }
