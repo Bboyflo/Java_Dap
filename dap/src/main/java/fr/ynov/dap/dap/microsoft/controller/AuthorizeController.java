@@ -30,6 +30,7 @@ public class AuthorizeController {
      * @param idToken .
      * @param state .
      * @param request .
+     * @param model .
      * @return la page html de mail
      */
     @RequestMapping(value = "/authorize", method = RequestMethod.POST)
@@ -71,7 +72,6 @@ public class AuthorizeController {
 
         model.addAttribute("authCode", code);
         model.addAttribute("idToken", idToken);
-        model.addAttribute("logoutUrl", "/logout");
 
         return "redirect:/mail";
     }

@@ -67,10 +67,10 @@ public class TokenResponse {
     }
 
     /**
-     * @param tokenType .
+     * @param theTokenType Modification de la valeur
      */
-    public void setTokenType(final String tokenType) {
-        this.tokenType = tokenType;
+    public void setTokenType(final String theTokenType) {
+        this.tokenType = theTokenType;
     }
 
     /**
@@ -81,10 +81,10 @@ public class TokenResponse {
     }
 
     /**
-     * @param scope .
+     * @param theScope Modification de la valeur
      */
-    public void setScope(final String scope) {
-        this.scope = scope;
+    public void setScope(final String theScope) {
+        this.scope = theScope;
     }
 
     /**
@@ -95,10 +95,10 @@ public class TokenResponse {
     }
 
     /**
-     * @param expiresIn .
+     * @param theExpiresIn Modification de la valeur
      */
-    public void setExpiresIn(final int expiresIn) {
-        this.expiresIn = expiresIn;
+    public void setExpiresIn(final int theExpiresIn) {
+        this.expiresIn = theExpiresIn;
         Calendar now = Calendar.getInstance();
         now.add(Calendar.SECOND, expiresIn);
         this.expirationTime = now.getTime();
@@ -112,10 +112,10 @@ public class TokenResponse {
     }
 
     /**
-     * @param accessToken .
+     * @param theAccessToken Modification de la valeur
      */
-    public void setAccessToken(final String accessToken) {
-        this.accessToken = accessToken;
+    public void setAccessToken(final String theAccessToken) {
+        this.accessToken = theAccessToken;
     }
 
     /**
@@ -126,10 +126,10 @@ public class TokenResponse {
     }
 
     /**
-     * @param refreshToken .
+     * @param theRefreshToken Modification de la valeur
      */
-    public void setRefreshToken(final String refreshToken) {
-        this.refreshToken = refreshToken;
+    public void setRefreshToken(final String theRefreshToken) {
+        this.refreshToken = theRefreshToken;
     }
 
     /**
@@ -140,10 +140,10 @@ public class TokenResponse {
     }
 
     /**
-     * @param idToken .
+     * @param theIdToken Modification de la valeur
      */
-    public void setIdToken(final String idToken) {
-        this.idToken = idToken;
+    public void setIdToken(final String theIdToken) {
+        this.idToken = theIdToken;
     }
 
     /**
@@ -154,10 +154,10 @@ public class TokenResponse {
     }
 
     /**
-     * @param error .
+     * @param theError Modification de la valeur
      */
-    public void setError(final String error) {
-        this.error = error;
+    public void setError(final String theError) {
+        this.error = theError;
     }
 
     /**
@@ -168,10 +168,10 @@ public class TokenResponse {
     }
 
     /**
-     * @param errorDescription .
+     * @param theErrorDescription Modification de la valeur
      */
-    public void setErrorDescription(final String errorDescription) {
-        this.errorDescription = errorDescription;
+    public void setErrorDescription(final String theErrorDescription) {
+        this.errorDescription = theErrorDescription;
     }
 
     /**
@@ -182,10 +182,10 @@ public class TokenResponse {
     }
 
     /**
-     * @param errorCodes .
+     * @param theErrorCodes Modification de la valeur
      */
-    public void setErrorCodes(final int[] errorCodes) {
-        this.errorCodes = errorCodes;
+    public void setErrorCodes(final int[] theErrorCodes) {
+        this.errorCodes = theErrorCodes;
     }
 
     /**

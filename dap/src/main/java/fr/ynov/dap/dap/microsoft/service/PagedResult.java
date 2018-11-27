@@ -30,10 +30,10 @@ public class PagedResult<T> {
     }
 
     /**
-     * @param nextPageLink modification de la valeur
+     * @param theNextPageLink modification de la valeur
      */
-    public void setNextPageLink(final String nextPageLink) {
-        this.nextPageLink = nextPageLink;
+    public void setNextPageLink(final String theNextPageLink) {
+        this.nextPageLink = theNextPageLink;
     }
 
     /**
@@ -44,10 +44,10 @@ public class PagedResult<T> {
     }
 
     /**
-     * @param value modification de la valeur
+     * @param thevalue modification de la valeur
      */
-    public void setValue(final T[] value) {
-        this.value = value;
+    public void setValue(final T[] thevalue) {
+        this.value = thevalue;
     }
 
     /**
@@ -58,9 +58,9 @@ public class PagedResult<T> {
     }
 
     /**
-     * @param mContext Modification de la valeur
+     * @param theContext Modification de la valeur
      */
-    public void setContext(final String mContext) {
-        this.context = mContext;
+    public void setContext(final String theContext) {
+        this.context = theContext;
     }
 }

@@ -28,10 +28,10 @@ public class OutlookUser {
     }
 
     /**
-     * @param id Changement de la valeur
+     * @param theId Changement de la valeur
      */
-    public void setId(final String id) {
-        this.id = id;
+    public void setId(final String theId) {
+        this.id = theId;
     }
 
     /**
@@ -56,9 +56,9 @@ public class OutlookUser {
     }
 
     /**
-     * @param displayName Changement de la valeur
+     * @param theDisplayName Changement de la valeur
      */
-    public void setDisplayName(final String displayName) {
-        this.displayName = displayName;
+    public void setDisplayName(final String theDisplayName) {
+        this.displayName = theDisplayName;
     }
 }

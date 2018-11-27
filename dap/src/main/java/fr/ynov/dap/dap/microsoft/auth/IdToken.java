@@ -94,10 +94,10 @@ public class IdToken {
     }
 
     /**
-     * @param expirationTime .
+     * @param theExpirationTime Modification de la valeur
      */
-    public void setExpirationTime(final long expirationTime) {
-        this.expirationTime = expirationTime;
+    public void setExpirationTime(final long theExpirationTime) {
+        this.expirationTime = theExpirationTime;
     }
 
     /**
@@ -108,10 +108,10 @@ public class IdToken {
     }
 
     /**
-     * @param notBefore .
+     * @param theNotBefore Modification de la valeur
      */
-    public void setNotBefore(final long notBefore) {
-        this.notBefore = notBefore;
+    public void setNotBefore(final long theNotBefore) {
+        this.notBefore = theNotBefore;
     }
 
     /**
@@ -122,10 +122,10 @@ public class IdToken {
     }
 
     /**
-     * @param tenantId .
+     * @param theTenantId Modification de la valeur
      */
-    public void setTenantId(final String tenantId) {
-        this.tenantId = tenantId;
+    public void setTenantId(final String theTenantId) {
+        this.tenantId = theTenantId;
     }
 
     /**
@@ -136,10 +136,10 @@ public class IdToken {
     }
 
     /**
-     * @param nonce .
+     * @param theNonce Modification de la valeur
      */
-    public void setNonce(final String nonce) {
-        this.nonce = nonce;
+    public void setNonce(final String theNonce) {
+        this.nonce = theNonce;
     }
 
     /**
@@ -150,10 +150,10 @@ public class IdToken {
     }
 
     /**
-     * @param name .
+     * @param theName Modification de la valeur
      */
-    public void setName(final String name) {
-        this.name = name;
+    public void setName(final String theName) {
+        this.name = theName;
     }
 
     /**
@@ -164,10 +164,10 @@ public class IdToken {
     }
 
     /**
-     * @param email .
+     * @param theEmail Modification de la valeur
      */
-    public void setEmail(final String email) {
-        this.email = email;
+    public void setEmail(final String theEmail) {
+        this.email = theEmail;
     }
 
     /**
@@ -178,10 +178,10 @@ public class IdToken {
     }
 
     /**
-     * @param preferredUsername .
+     * @param thePreferredUsername Modification de la valeur
      */
-    public void setPreferredUsername(final String preferredUsername) {
-        this.preferredUsername = preferredUsername;
+    public void setPreferredUsername(final String thePreferredUsername) {
+        this.preferredUsername = thePreferredUsername;
     }
 
     /**
@@ -192,10 +192,10 @@ public class IdToken {
     }
 
     /**
-     * @param objectId .
+     * @param theObjectId Modification de la valeur
      */
-    public void setObjectId(final String objectId) {
-        this.objectId = objectId;
+    public void setObjectId(final String theObjectId) {
+        this.objectId = theObjectId;
     }
 
     /**
@@ -211,10 +211,10 @@ public class IdToken {
     }
 
     /**
-     * @param nonce .
+     * @param theNonce .
      * @return true ou false
      */
-    private boolean isValid(final String nonce) {
+    private boolean isValid(final String theNonce) {
         // This method does some basic validation
         // For more information on validation of ID tokens, see
         // https://azure.microsoft.com/en-us/documentation/articles/active-directory-v2-tokens/#validating-tokens
@@ -228,7 +228,7 @@ public class IdToken {
         }
 
         // Check nonce
-        if (!nonce.equals(this.getNonce())) {
+        if (!theNonce.equals(this.getNonce())) {
             // Nonce mismatch
             return false;
         }

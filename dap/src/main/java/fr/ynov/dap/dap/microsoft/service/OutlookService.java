@@ -31,20 +31,35 @@ public interface OutlookService {
             @Query("$top") Integer maxResults);
 
     /**
-     * @param folderId
-     * @return
+     * @param folderId .
+     * @return .
      */
     /*@GET("/v1.0/me/mailfolders/{folderid}")
     Call<PageResultForAllMessage> getAllMessages(@Path("folderid") String folderId);*/
 
     /**
-     * @param orderBy
-     * @param select
-     * @param maxResults
-     * @param filter
-     * @return
+     * @param orderBy .
+     * @param select .
+     * @param maxResults .
+     * @param filter .
+     * @return .
      */
-    /*@GET("/v1.0/me/events")
-    Call<PagedResult<Event>> getNextEvents(@Query("$orderby") String orderBy, @Query("$select") String select,
-            @Query("$top") Integer maxResults, @Query("$filter") String filter);*/
+    @GET("/v1.0/me/events")
+    Call<PagedResult<Event>> getEvents(
+            @Query("$orderby") String orderBy,
+            @Query("$select") String select,
+            @Query("$top") Integer maxResults);
+    // @Query("$filter") String filter);
+
+    /**
+    * @param orderBy .
+    * @param select .
+    * @param maxResults .
+    * @return .
+    */
+    @GET("/v1.0/me/contacts")
+    Call<PagedResult<Contact>> getContacts(
+            @Query("$orderby") String orderBy,
+            @Query("$select") String select,
+            @Query("$top") Integer maxResults);
 }

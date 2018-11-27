@@ -42,10 +42,10 @@ public class Message {
     }
 
     /**
-     * @param id changement de la valeur
+     * @param theId changement de la valeur
      */
-    public void setId(final String id) {
-        this.id = id;
+    public void setId(final String theId) {
+        this.id = theId;
     }
 
     /**
@@ -56,10 +56,10 @@ public class Message {
     }
 
     /**
-     * @param receivedDateTime changement de la valeur
+     * @param theReceivedDateTime changement de la valeur
      */
-    public void setReceivedDateTime(final Date receivedDateTime) {
-        this.receivedDateTime = receivedDateTime;
+    public void setReceivedDateTime(final Date theReceivedDateTime) {
+        this.receivedDateTime = theReceivedDateTime;
     }
 
     /**
@@ -70,10 +70,10 @@ public class Message {
     }
 
     /**
-     * @param from changement de la valeur
+     * @param theFrom changement de la valeur
      */
-    public void setFrom(final Recipient from) {
-        this.from = from;
+    public void setFrom(final Recipient theFrom) {
+        this.from = theFrom;
     }
 
     /**
@@ -84,10 +84,10 @@ public class Message {
     }
 
     /**
-     * @param isRead changement de la valeur
+     * @param theIsRead changement de la valeur
      */
-    public void setIsRead(final Boolean isRead) {
-        this.isRead = isRead;
+    public void setIsRead(final Boolean theIsRead) {
+        this.isRead = theIsRead;
     }
 
     /**
@@ -98,10 +98,10 @@ public class Message {
     }
 
     /**
-     * @param subject changement de la valeur
+     * @param theSubject changement de la valeur
      */
-    public void setSubject(final String subject) {
-        this.subject = subject;
+    public void setSubject(final String theSubject) {
+        this.subject = theSubject;
     }
 
     /**
@@ -112,9 +112,9 @@ public class Message {
     }
 
     /**
-     * @param bodyPreview changement de la valeur
+     * @param theBodyPreview changement de la valeur
      */
-    public void setBodyPreview(final String bodyPreview) {
-        this.bodyPreview = bodyPreview;
+    public void setBodyPreview(final String theBodyPreview) {
+        this.bodyPreview = theBodyPreview;
     }
 }

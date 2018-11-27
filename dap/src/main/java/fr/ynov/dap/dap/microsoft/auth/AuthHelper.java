@@ -36,12 +36,8 @@ public class AuthHelper {
             "profile",
             "User.Read",
             "Mail.Read",
-            "openid",
-            "offline_access",
-            "profile",
-            "User.Read",
-            "Mail.Read",
-            "Calendars.Read" };
+            "Calendars.Read",
+            "Contacts.Read" };
 
     /**.
      * Déclaration de appId

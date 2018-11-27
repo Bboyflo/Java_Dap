@@ -24,10 +24,10 @@ public class EmailAddress {
     }
 
     /**
-     * @param name mofication de la valeur
+     * @param theName mofication de la valeur
      */
-    public void setName(final String name) {
-        this.name = name;
+    public void setName(final String theName) {
+        this.name = theName;
     }
 
     /**
@@ -38,9 +38,9 @@ public class EmailAddress {
     }
 
     /**
-     * @param address modification de la valeur
+     * @param theAddress modification de la valeur
      */
-    public void setAddress(final String address) {
-        this.address = address;
+    public void setAddress(final String theAddress) {
+        this.address = theAddress;
     }
 }

@@ -11,34 +11,33 @@
 
 <link rel="stylesheet" type="text/css" th:href="@{/css/dap.css}" />
 
-<title>Consultation des mails non lu</title>
+<title>Data Access Project Admin</title>
 
 </head>
 <body>
 
-	<h1>Consultation du nombre de mail non lu</h1>
-	
+	<h1>Consultation du nombre de contacts sur un compte microsoft</h1>
+
 	<nav>
 		<a th:href="${logoutUrl}" th:text="#{deconnexion}" /></a>
 		<a th:href="${evenement}" th:text="#{evenement}" /></a>
-		<a th:href="${contact}" th:text="#{contact}" /></a>
+		<a th:href="${mail}" th:text="#{mail}" /></a>
 	</nav>
-	
 
 	<th:if test="${error ne null}">
 		<span th:text="${error}"></span>
 	</th:if>
 
-	<p>Voici le nombre de message non lu : </p>
-	<span th:text="${nbMessageNonLu}"></span>
-
+	<h3>Les contacts du compte</h3>
 	<table>
-		<th:block th:each="message : ${messages}">
+		<tr>
+			<th>Name</th>
+			<th>Company</th>
+		</tr>
+		<th:block th:each="contacts : ${contacts}">
 			<tr>
-				<td th:text="${message.from.emailAddress.name}"></td>
-				<td th:text="${message.subject}"></td>
-				<td th:text="${message.receivedDateTime}"></td>
-				<td th:text="${message.bodyPreview}"></td>
+				<td th:text="${contacts.givenName + ' ' + contacts.surname}"></td>
+				<td th:text="${contacts.companyName}"></td>
 			</tr>
 		</th:block>
 	</table>

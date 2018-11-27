@@ -5,6 +5,10 @@ body{
 	padding: 0;
 }
 
+nav a{
+	padding: 1em;
+}
+
 h1 {
 	color: purple;
 }

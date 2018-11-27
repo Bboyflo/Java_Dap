@@ -12,7 +12,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import fr.ynov.dap.dap.microsoft.auth.AuthHelper;
 import fr.ynov.dap.dap.microsoft.auth.TokenResponse;
-import fr.ynov.dap.dap.microsoft.service.Message;
+import fr.ynov.dap.dap.microsoft.service.Contact;
 import fr.ynov.dap.dap.microsoft.service.OutlookService;
 import fr.ynov.dap.dap.microsoft.service.OutlookServiceBuilder;
 import fr.ynov.dap.dap.microsoft.service.PagedResult;
@@ -21,7 +21,7 @@ import fr.ynov.dap.dap.microsoft.service.PagedResult;
  * @author Florian
  */
 @Controller
-public class MailController {
+public class ContactsController {
 
     /**.
      * Déclaration de MAXRESULTS
@@ -32,11 +32,10 @@ public class MailController {
      * @param model .
      * @param request .
      * @param redirectAttributes .
-     * @return la page mail
+     * @return La page contacts
      */
-    @RequestMapping("/mail")
-    public String mail(final Model model, final HttpServletRequest request,
-            final RedirectAttributes redirectAttributes) {
+    @RequestMapping("/contacts")
+    public String contacts(Model model, HttpServletRequest request, RedirectAttributes redirectAttributes) {
         HttpSession session = request.getSession();
         TokenResponse tokens = (TokenResponse) session.getAttribute("tokens");
         if (tokens == null) {
@@ -53,29 +52,23 @@ public class MailController {
 
         OutlookService outlookService = OutlookServiceBuilder.getOutlookService(tokens.getAccessToken(), email);
 
-        // Retrieve messages from the inbox
-        String folder = "inbox";
-        // Sort by time received in descending order
-        String sort = "receivedDateTime DESC";
+        // Sort by given name in ascending order (A-Z)
+        String sort = "GivenName ASC";
         // Only return the properties we care about
-        String properties = "receivedDateTime,from,isRead,subject,bodyPreview";
+        String properties = "GivenName,Surname,CompanyName";
+        // Return at most 10 contacts
 
         try {
-            PagedResult<Message> messages = outlookService.getMessages(
-                    folder, sort, properties, MAXRESULTS)
-                    .execute().body();
-
-            //PageResultForAllMessage messagesUnreadAll = outlookService.getAllMessages(folder).execute().body();
-            model.addAttribute("messages", messages.getValue());
-            //model.addAttribute("nbMessageNonLu", messagesUnreadAll.getUnreadItemCount());
+            PagedResult<Contact> contacts = outlookService.getContacts(sort, properties, MAXRESULTS).execute().body();
+            model.addAttribute("contacts", contacts.getValue());
             model.addAttribute("logoutUrl", "/logout");
             model.addAttribute("evenement", "/events");
-            model.addAttribute("contact", "/contacts");
+            model.addAttribute("mail", "/mail");
         } catch (IOException e) {
             redirectAttributes.addFlashAttribute("error", e.getMessage());
             return "redirect:/";
         }
 
-        return "mail";
+        return "contact";
     }
 }

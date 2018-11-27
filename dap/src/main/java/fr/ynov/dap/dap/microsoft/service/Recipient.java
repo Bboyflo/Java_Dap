@@ -21,9 +21,9 @@ public class Recipient {
     }
 
     /**
-     * @param emailAddress modification de la valeur
+     * @param theEmailAddress modification de la valeur
      */
-    public void setEmailAddress(final EmailAddress emailAddress) {
-        this.emailAddress = emailAddress;
+    public void setEmailAddress(final EmailAddress theEmailAddress) {
+        this.emailAddress = theEmailAddress;
     }
 }

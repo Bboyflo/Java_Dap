@@ -11,34 +11,41 @@
 
 <link rel="stylesheet" type="text/css" th:href="@{/css/dap.css}" />
 
-<title>Consultation des mails non lu</title>
+<title>Data Access Project Admin</title>
 
 </head>
 <body>
 
-	<h1>Consultation du nombre de mail non lu</h1>
-	
+	<h1>Consultation du prochain évènement d'un compte microsoft</h1>
+
 	<nav>
 		<a th:href="${logoutUrl}" th:text="#{deconnexion}" /></a>
-		<a th:href="${evenement}" th:text="#{evenement}" /></a>
+		<a th:href="${mail}" th:text="#{mail}" /></a>
 		<a th:href="${contact}" th:text="#{contact}" /></a>
 	</nav>
-	
 
 	<th:if test="${error ne null}">
 		<span th:text="${error}"></span>
 	</th:if>
 
-	<p>Voici le nombre de message non lu : </p>
-	<span th:text="${nbMessageNonLu}"></span>
 
+	<h3>Calendrier des évènements</h3>
+	
 	<table>
-		<th:block th:each="message : ${messages}">
+
+		<tr>
+			<th>Organisateur</th>
+			<th>Sujet</th>
+			<th>Debut Event</th>
+			<th>Fin Event</th>
+		</tr>
+
+		<th:block th:each="events : ${events}">
 			<tr>
-				<td th:text="${message.from.emailAddress.name}"></td>
-				<td th:text="${message.subject}"></td>
-				<td th:text="${message.receivedDateTime}"></td>
-				<td th:text="${message.bodyPreview}"></td>
+				<td th:text="${events.organizer.emailAddress.name}"></td>
+				<td th:text="${events.subject}"></td>
+				<td th:text="${events.start.dateTime}"></td>
+				<td th:text="${events.end.dateTime}"></td>
 			</tr>
 		</th:block>
 	</table>
