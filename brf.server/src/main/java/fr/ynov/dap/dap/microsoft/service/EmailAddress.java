@@ -31,7 +31,7 @@ public class EmailAddress {
     }
 
     /**
-     * @return address
+     * @return l'adresse
      */
     public String getAddress() {
         return address;
